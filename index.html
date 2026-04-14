@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Vendas</title>
+
+  <script>
+    !function(i,n){
+      i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())
+    }(window,performance);
+  </script>
+
+  <link rel="preload" href="https://scripts.converteai.net/4822591e-a0fa-44b2-9138-d26e40e662c4/players/69dbb204b4a3becf5f2ec007/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="preload" href="https://cdn.converteai.net/4822591e-a0fa-44b2-9138-d26e40e662c4/69dbb106ccd7dd53185f0d51/main.m3u8" as="fetch">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222222;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 393px;
+      background: #ffffff;
+      min-height: 100vh;
+    }
+
+    .headline-wrap {
+      width: 100%;
+      background: #ffffff;
+      border-left: 1px solid #eeeeee;
+      border-right: 1px solid #eeeeee;
+      border-top: 1px solid #eeeeee;
+      padding: 14px 18px 8px;
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 19px;
+      line-height: 1.32;
+      font-weight: 700;
+      color: #202020;
+      letter-spacing: -0.2px;
+    }
+
+    .headline .highlight {
+      color: #ff5a3c;
+    }
+
+    .subheadline-wrap {
+      width: 100%;
+      background: #ffffff;
+      border-left: 1px solid #eeeeee;
+      border-right: 1px solid #eeeeee;
+      border-bottom: 1px solid #eeeeee;
+      padding: 8px 14px 14px;
+      text-align: center;
+    }
+
+    .subheadline {
+      font-size: 13px;
+      line-height: 1.38;
+      color: #555555;
+      font-weight: 400;
+    }
+
+    .live-notice {
+      width: 100%;
+      background: #f3f3f3;
+      text-align: center;
+      padding: 12px 16px 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222222;
+    }
+
+    .live-views-line {
+      font-size: 15px;
+      line-height: 1.35;
+      margin: 0 0 4px 0;
+      color: #111111;
+    }
+
+    .live-warning-line {
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 0;
+      color: #333333;
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #21c443;
+      margin-right: 6px;
+      vertical-align: middle;
+      box-shadow: 0 0 0 0 rgba(33, 196, 67, 0.6);
+      animation: pulseDot 1.8s infinite;
+    }
+
+    #liveViews {
+      color: #c40000;
+      font-weight: 700;
+    }
+
+    #dynamicDate,
+    #dynamicWeekday {
+      color: #b22222;
+      font-weight: 700;
+    }
+
+    @keyframes pulseDot {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(33, 196, 67, 0.55);
+      }
+      70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 8px rgba(33, 196, 67, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(33, 196, 67, 0);
+      }
+    }
+
+    .video-section {
+      width: 100%;
+      background: #ededed;
+      padding: 12px 8px 0;
+    }
+
+    .video-frame {
+      width: 100%;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-frame vturb-smartplayer {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .footer {
+      width: 100%;
+      background: #f1ede8;
+      padding: 34px 22px 36px;
+      text-align: center;
+    }
+
+    .footer-links {
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #4b4b4b;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: #4b4b4b;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #555555;
+      margin: 0 auto 24px;
+      max-width: 310px;
+    }
+
+    .copyright {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #555555;
+    }
+
+    @media (max-width: 480px) {
+      .live-notice {
+        padding: 10px 12px 12px;
+      }
+
+      .live-views-line {
+        font-size: 14px;
+      }
+
+      .live-warning-line {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        max-width: 100%;
+      }
+
+      .headline {
+        font-size: 18px;
+      }
+
+      .subheadline,
+      .footer-links,
+      .footer-text,
+      .copyright {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <section class="headline-wrap">
+      <h1 class="headline">
+        Ex-vitima de corrimento e profissional de saúde intima feminina<br>
+        descobre como se livrar de corrimento <span class="highlight">EM APENAS 14 DIAS</span><br>
+        de forma natural e saudável com apenas esse truque secreto<br>
+        e você também pode começar a usar<br>
+        e acabar com o corrimento ainda hoje...
+      </h1>
+    </section>
+
+    <section class="subheadline-wrap">
+      <p class="subheadline">
+        Não tem nada haver com gel íntimos, pérolas detox<br>
+        receitas caras e muito menos bafos estranhos...
+      </p>
+    </section>
+
+    <div class="live-notice">
+      <p class="live-views-line">
+        <span class="live-dot"></span>
+        <strong><span id="liveViews">1287</span></strong> pessoas vendo agora mesmo...
+      </p>
+
+      <p class="live-warning-line">
+        Devido à alta demanda de acesso, este site poderá ficar indisponível no dia
+        <strong id="dynamicDate">12/04/2026</strong>,
+        <strong id="dynamicWeekday">Domingo</strong>.
+      </p>
+    </div>
+
+    <section class="video-section">
+      <div class="video-frame">
+        <vturb-smartplayer
+          id="vid-69dbb204b4a3becf5f2ec007"
+          style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+        </vturb-smartplayer>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a> |
+        <a href="#">Termos de Uso</a>
+      </div>
+
+      <p class="footer-text">
+        Os conteúdos de DICAS DA MANA MILA® têm caráter exclusivamente educativo e informativo,
+        não substituem consulta com profissional habilitado e não se destinam a
+        diagnosticar, tratar, curar ou prevenir doenças. Os resultados podem variar de
+        pessoa para pessoa.
+      </p>
+
+      <p class="copyright">
+        DICAS DA MANA MILA® – © 2025 Todos os direitos reservados
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const liveViewsEl = document.getElementById("liveViews");
+      const dynamicDateEl = document.getElementById("dynamicDate");
+      const dynamicWeekdayEl = document.getElementById("dynamicWeekday");
+
+      const weekdays = [
+        "Domingo",
+        "Segunda-feira",
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sábado"
+      ];
+
+      const today = new Date();
+      const daysAhead = 0;
+
+      const targetDate = new Date(today);
+      targetDate.setDate(today.getDate() + daysAhead);
+
+      const day = String(targetDate.getDate()).padStart(2, "0");
+      const month = String(targetDate.getMonth() + 1).padStart(2, "0");
+      const year = targetDate.getFullYear();
+      const weekday = weekdays[targetDate.getDay()];
+
+      dynamicDateEl.textContent = `${day}/${month}/${year}`;
+      dynamicWeekdayEl.textContent = weekday;
+
+      let currentViews = Math.floor(Math.random() * (4000 - 800 + 1)) + 800;
+      liveViewsEl.textContent = currentViews.toLocaleString("pt-PT");
+
+      function updateViewsGradually() {
+        const variation = Math.floor(Math.random() * 41) - 20;
+        currentViews += variation;
+
+        if (currentViews < 800) currentViews = 800;
+        if (currentViews > 4000) currentViews = 4000;
+
+        liveViewsEl.textContent = currentViews.toLocaleString("pt-PT");
+      }
+
+      function startDynamicUpdates() {
+        updateViewsGradually();
+        const nextDelay = Math.floor(Math.random() * 2500) + 1200;
+        setTimeout(startDynamicUpdates, nextDelay);
+      }
+
+      startDynamicUpdates();
+    })();
+  </script>
+
+  <script type="text/javascript">
+    var s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/4822591e-a0fa-44b2-9138-d26e40e662c4/players/69dbb204b4a3becf5f2ec007/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+  </script>
+</body>
+</html>
